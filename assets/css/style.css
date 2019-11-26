@@ -1,0 +1,63 @@
+#showcase {
+  width: 100vw;
+  height: 100vh;
+  margin: 0px;
+}
+
+.bg-image {
+  position: absolute;
+  background-image: url("../images/ms-8orExO.gif");
+  /* background-image: url("../images/ms-5QPByP.gif"); */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-size: 175%;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  z-index: -3;
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+  margin: 0px;
+  
+}
+
+#wrapper {
+  width: 80%;
+  height: 100vh;
+  margin: auto;
+  text-align: center;
+  z-index: 3;
+  
+}
+
+h1 {
+  /* color: rgb(5, 5, 5); */
+  /* font-family: 'Creepster', cursive; */
+  /* font-size: 5rem; */
+  letter-spacing: 0.4rem;
+  /* opacity: 0.6;
+    filter: alpha(opacity=60); */
+  margin-block-start: 1.83em;
+  margin-block-end: 1.83em;
+  text-shadow: -1px -1px 1px #fff, 1px 1px 1px #000;
+  color: #b2b2b4;
+  opacity: 0.7;
+  font: 100px "Museo700";
+}
+
+.btn {
+  /* box-shadow:  -1px -1px 1px #fff, 1px 1px 1px #000; */
+  color: #b2b2b4;
+  text-shadow: -1px -1px 1px #fff, 1px 1px 1px #000;
+  color: #b2b2b4;
+  opacity: 0.6;
+  font: 50px "Museo700";
+}
+
+.grow {
+  transition: all 0.3s ease-in-out;
+}
+.grow:hover {
+  transform: scale(1.1);
+}
