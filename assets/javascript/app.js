@@ -41,7 +41,8 @@ var questions = [
       "Spiders spin little hairs to make their webs",
       "Spiders find the silk in China"
     ],
-    correctAnswer: "The silk is produced in silk glands with the help of the Spider's spinnerets",
+    correctAnswer:
+      "The silk is produced in silk glands with the help of the Spider's spinnerets",
     image: "assets/images/ms-0lXO5X.gif"
   },
   {
@@ -138,10 +139,12 @@ var game = {
     //   "<h3>The correct answer was: <br> " +
     //     questions[game.currentQuestion].correctAnswer +
     //     "</h3>"
-        
+
     // );
-    
-    var imageLost = $("<img>").attr("src", "assets/images/ms-8E0kwP.gif").addClass("photo1");
+
+    var imageLost = $("<img>")
+      .attr("src", "assets/images/ms-8E0kwP.gif")
+      .addClass("photo1");
     $("#subwrapper").append(imageLost);
 
     // will determine if this should take us the the next question or if we are on the last question - takes us to results screen
@@ -185,13 +188,15 @@ var game = {
     //prints a massage
     $("#subwrapper").html("<h2>YOU GOT THIS!!!</h2>");
 
-    var image = $("<img>").attr("src", questions[game.currentQuestion].image).addClass("photo");
+    var image = $("<img>")
+      .attr("src", questions[game.currentQuestion].image)
+      .addClass("photo");
     // image.attr("src", questions[game.currentQuestion].image)
     ////////////////////////////////////////////////////
     $("#subwrapper").append(image);
-        
-        //   /////////////////////////////////
-        
+
+    //   /////////////////////////////////
+
     // will determine if this should take us the the next question or if we are on the last question - takes us to results screen
     if (game.currentQuestion == questions.length - 1) {
       setTimeout(game.results, 5 * 1000);
