@@ -12,8 +12,8 @@ $(document).on("click", ".answer-button", function(e) {
 });
 
 $(document).on("click", "#reset", function() {
-    game.reset();
-  });
+  game.reset();
+});
 
 var questions = [
   {
@@ -41,8 +41,7 @@ var questions = [
       "Spiders spin little hairs to make their webs",
       "Spiders find the silk in China"
     ],
-    correctAnswer:
-      "The silk is produced in silk glands with the help of the Spider's spinnerets",
+    correctAnswer: "The silk is produced in silk glands with the help of the Spider's spinnerets",
     image: "assets/images/ms-0lXO5X.gif"
   },
   {
@@ -85,8 +84,8 @@ var game = {
   countdown: function() {
     game.counter--;
     // posting counted /lowered counter to the page - it will be posting each number as it goes down
-    $('#counter').html(game.counter);
-    // below is telling if it's run out or not
+    $("#counter").html(game.counter);
+    // below is telling if it's run out time or not
     if (game.counter <= 0) {
       console.log(" TIME UP! ");
       game.timeUp();
@@ -96,14 +95,20 @@ var game = {
   loadQuestion: function() {
     // this function will run every 1 second and will be lowering the counter
     timer = setInterval(game.countdown, 1000);
+
+    $("#subwrapper").html(
+      // '<h4 id="counter">30</h4>'
+      // '<h4> <span id="counter">30</span>Seconds</h4>'
+      '<h3> You have <span id="counter">30</span> seconds</h3>'
+    );
     // post a question to the page
-    $('#subwrapper').html(
+    $("#subwrapper").append(
       "<h2>" + questions[game.currentQuestion].question + "</h2>"
     );
     // post all answers to the page as button
     for (var i = 0; i < questions[game.currentQuestion].answers.length; i++) {
-      $('#subwrapper').append(
-        '<button class="answer-button" id="button-' +
+      $("#subwrapper").append(
+        '<button class="btn btn-secondary btn-lg btn-block grow answer-button" id="button-' +
           i +
           ' "data-name="' +
           questions[game.currentQuestion].answers[i] +
@@ -118,8 +123,8 @@ var game = {
     //   this will set up the timer to  a new count
     game.counter = 30;
     //   this will print the new counter time on HTML
-    $('#counter').html(game.counter);
-     //   this will bring a new question from array - otherwise it will be looping through the same question over and over
+    $("#counter").html(game.counter);
+    //   this will bring a new question from array - otherwise it will be looping through the same question over and over
     game.currentQuestion++;
     //   will load next question
     game.loadQuestion();
@@ -128,23 +133,34 @@ var game = {
   timeUp: function() {
     clearInterval(timer);
     game.unanswered++;
-    $('#subwrapper').html('<h2>OUT OF TIME!!!</h2>');
-    $('#subwrapper').append('<h4>The correct answer was: <br> ' +questions[game.currentQuestion].correctAnswer+ '</h4>');
-        // will determine if this should take us the the next question or if we are on the last question - takes us to results screen
-if(game.currentQuestion == questions.length-1){
-    setTimeout(game.results, 3*1000);
-} else {
-setTimeout(game.nextQuestion, 3*1000);
-}
+    $("#subwrapper").html("<h2>OUT OF TIME!!!</h2>");
+    // $("#subwrapper").append(
+    //   "<h3>The correct answer was: <br> " +
+    //     questions[game.currentQuestion].correctAnswer +
+    //     "</h3>"
+        
+    // );
+    
+    var imageLost = $("<img>").attr("src", "assets/images/ms-8E0kwP.gif").addClass("photo1");
+    $("#subwrapper").append(imageLost);
+
+    // will determine if this should take us the the next question or if we are on the last question - takes us to results screen
+    if (game.currentQuestion == questions.length - 1) {
+      setTimeout(game.results, 5 * 1000);
+    } else {
+      setTimeout(game.nextQuestion, 5 * 1000);
+    }
   },
 
   results: function() {
-      clearInterval(timer);
-      $('#subwrapper').html('<h2>ALL DONE!!!</h2>');
-      $('#subwrapper').append('<h4>Correct: '+game.correct+ '</h4>');
-      $('#subwrapper').append('<h4>Incorrect: '+game.incorrect+ '</h4>');
-      $('#subwrapper').append('<h4>Unanswered: '+game.unanswered+ '</h4>');
-      $('#subwrapper').append('<button id="reset">RESET</button>');
+    clearInterval(timer);
+    $("#subwrapper").html("<h2>ALL DONE!!!</h2>");
+    $("#subwrapper").append("<h3>Correct: " + game.correct + "</h3>");
+    $("#subwrapper").append("<h3>Incorrect: " + game.incorrect + "</h3>");
+    $("#subwrapper").append("<h3>Unanswered: " + game.unanswered + "</h3>");
+    $("#subwrapper").append(
+      '<button class="btn btn-secondary btn-lg btn-block grow" id="reset">RESET</button>'
+    );
   },
 
   clicked: function(e) {
@@ -162,18 +178,26 @@ setTimeout(game.nextQuestion, 3*1000);
 
   answeredCorrectly: function() {
     console.log("YOU GOT THIS!!!");
-// stop timer from ticking
+    // stop timer from ticking
     clearInterval(timer);
     //add to correct score number
     game.correct++;
     //prints a massage
-    $('#subwrapper').html('<h2>YOU GOT THIS!!!</h2>');
+    $("#subwrapper").html("<h2>YOU GOT THIS!!!</h2>");
+
+    var image = $("<img>").attr("src", questions[game.currentQuestion].image).addClass("photo");
+    // image.attr("src", questions[game.currentQuestion].image)
+    ////////////////////////////////////////////////////
+    $("#subwrapper").append(image);
+        
+        //   /////////////////////////////////
+        
     // will determine if this should take us the the next question or if we are on the last question - takes us to results screen
-if(game.currentQuestion == questions.length-1){
-    setTimeout(game.results, 3 *1000);
-} else {
-setTimeout(game.nextQuestion, 3 *1000);
-}
+    if (game.currentQuestion == questions.length - 1) {
+      setTimeout(game.results, 5 * 1000);
+    } else {
+      setTimeout(game.nextQuestion, 5 * 1000);
+    }
   },
 
   answeredIncorrectly: function() {
@@ -183,22 +207,26 @@ setTimeout(game.nextQuestion, 3 *1000);
     //add to correct score number
     game.incorrect++;
     //prints a massage
-    $('#subwrapper').html('<h2>SORRY YOU GOT IT WRONG!!!</h2>');
-    $('#subwrapper').append('<h4>The correct answer was: <br>' +questions[game.currentQuestion].correctAnswer+ '</h4>');
+    $("#subwrapper").html("<h2>SORRY YOU GOT IT WRONG!!!</h2>");
+    $("#subwrapper").append(
+      "<h4>The correct answer was: <br>" +
+        questions[game.currentQuestion].correctAnswer +
+        "</h4>"
+    );
     // will determine if this should take us the the next question or if we are on the last question - takes us to results screen
-if(game.currentQuestion == questions.length-1){
-    setTimeout(game.results, 3 *1000);
-} else {
-setTimeout(game.nextQuestion, 3 *1000);
-}
+    if (game.currentQuestion == questions.length - 1) {
+      setTimeout(game.results, 5 * 1000);
+    } else {
+      setTimeout(game.nextQuestion, 5 * 1000);
+    }
   },
 
   reset: function() {
-    game.currentQuestion = 0,
-    game.counter = 30,
-    game.correct = 0,
-    game.incorrect = 0,
-    game.unanswered = 0,
-    game.loadQuestion();
+    (game.currentQuestion = 0),
+      (game.counter = 30),
+      (game.correct = 0),
+      (game.incorrect = 0),
+      (game.unanswered = 0),
+      game.loadQuestion();
   }
 };
