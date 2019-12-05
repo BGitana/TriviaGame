@@ -1,4 +1,4 @@
-alert("Script Tags Work?");
+// alert("Script Tags Work?");
 
 $("#start").on("click", function() {
   $("#start").remove();
