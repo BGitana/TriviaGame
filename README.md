@@ -4,7 +4,7 @@ jQuery, JavaScript, HTML ,CSS, Bootstrap
 
 ### Overview
 
-**Trivia Game** is a Spider Trivia game using JavaScript for the logic and jQuery to manipulate HTML. All questions will be testing your arachnids' knowledge. You will have thirty seconds to select an answer to each question, after which the correct answer will be revealed. Answering correctly will earn five points, while answering incorrectly or not at all will earn you zero points. Your final score will be shown at the end of the game.
+**Trivia Game** is a Spider Trivia using JavaScript for the logic and jQuery to manipulate HTML. All questions will be testing your arachnids' knowledge. You will have thirty seconds to select an answer to each question, after which the correct answer will be revealed. Answering correctly will earn five points, while answering incorrectly or not at all will earn you zero points. Your final score will be shown at the end of the game.
 <br>
 Welcome to [Trivia Game](https://bgitana.github.io/crystals-collector-game/). Enjoy!
 
