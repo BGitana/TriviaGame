@@ -7,7 +7,6 @@
 .bg-image {
   position: absolute;
   background-image: url("../images/ms-8orExO.gif");
-  /* background-image: url("../images/ms-5QPByP.gif"); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -34,8 +33,6 @@ h1 {
   /* font-family: 'Creepster', cursive; */
   /* font-size: 5rem; */
   letter-spacing: 0.4rem;
-  /* opacity: 0.6;
-    filter: alpha(opacity=60); */
   margin-block-start: 1.83em;
   margin-block-end: 1.83em;
   text-shadow: -1px -1px 1px #fff, 1px 1px 1px #000;
